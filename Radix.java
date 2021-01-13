@@ -40,8 +40,25 @@ public class Radix{
     }
   }
 
+  public static void radixSort(SortableLinkedList data){
+    SortableLinkedList pos = new SortableLinkedList();
+    SortableLinkedList neg = new SortableLinkedList();
 
+    while (data.size() != 0) {
+      int value = (int)data.get(0);
+      if (value >= 0) pos.add(value);
+      else {
+        neg.add(value * -1);
+      }
+      data.remove(0);
+    }
 
+    radixSortSimple(neg);
+    radixSortSimple(pos);
+    for (int i = neg.size() - 1; i >= 0; i --) {
+      data.add(-1 * neg.get(i));
+    }
 
-
+    data.extend(pos);
+  }
 }
