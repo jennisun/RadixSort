@@ -18,7 +18,7 @@ public class Radix{
   }
 
   public static void radixSortSimple(SortableLinkedList data) {
-    int maxlen = length(data.get(0));
+    int maxlen = 1;
 
     for (int k = 0; k < maxlen; k ++) {
       SortableLinkedList[] buckets = new SortableLinkedList[10];
