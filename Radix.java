@@ -31,7 +31,8 @@ public class Radix{
 
     for (int k = 0; k < maxlen; k ++) {
       while (data.size() != 0) {
-        buckets[nth(data.get(0), k)].add(data.get(0));
+        if (k < length((int)data.get(0))) buckets[nth(data.get(0), k)].add(data.get(0));
+        else buckets[0].add(data.get(0));
         data.remove(0);
       }
 
