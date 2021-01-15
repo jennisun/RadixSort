@@ -41,7 +41,7 @@ public class Radix{
     SortableLinkedList neg = new SortableLinkedList();
 
     while (data.size() != 0) {
-      int value = (int)data.get(0);
+      int value = data.get(0);
       if (value >= 0) pos.add(value);
       else neg.add(value * -1);
       data.remove(0);
@@ -49,9 +49,8 @@ public class Radix{
 
     radixSortSimple(neg);
     radixSortSimple(pos);
-    for (int i = neg.size() - 1; i >= 0; i --) {
-      data.add(-1 * neg.get(i));
-    }
+
+    while (neg.size() != 0) data.add(-1 * neg.remove(neg.size() - 1));
 
     data.extend(pos);
   }
